@@ -18,7 +18,8 @@ jobs:
       - name: Lint Dockerfile
         uses: hadolint/hadolint-action@master
         with:
-          dockerfile: "Dockerfile"
+          dockerfile: Dockerfile
+          verbose: true
 
       # - name: Run base tests
       #   run: make test-x86
@@ -27,7 +28,7 @@ jobs:
       #   run: make test-s3-x86
 
       - name: Setup python
-        uses: actions/setup-python@v3.1.0
+        uses: actions/setup-python@v3.1.2
 
       - name: Run pre-commit hooks
         run: |
