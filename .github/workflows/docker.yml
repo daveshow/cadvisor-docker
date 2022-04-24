@@ -7,9 +7,9 @@ name: push-docker-images
       - main
     tags:
       - 'v*'
-  pull_request:
-    branches:
-      - main
+  # pull_request:
+  #   branches:
+  #     - main
 
 jobs:
   docker:
@@ -22,6 +22,11 @@ jobs:
       - name: Assign release version from version.properties to Env variable
         run: |
            cat version.properties >> $GITHUB_ENV
+
+      - name: Lint Dockerfile
+        uses: hadolint/hadolint-action@master
+        with:
+          dockerfile: "Dockerfile"
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1

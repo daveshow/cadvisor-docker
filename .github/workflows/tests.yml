@@ -15,6 +15,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Lint Dockerfile
+        uses: hadolint/hadolint-action@master
+        with:
+          dockerfile: "Dockerfile"
+
       # - name: Run base tests
       #   run: make test-x86
 
