@@ -18,7 +18,8 @@ jobs:
       - name: Lint Dockerfile
         uses: hadolint/hadolint-action@master
         with:
-          dockerfile: "Dockerfile"
+          dockerfile: Dockerfile
+          verbose: true
 
       # - name: Run base tests
       #   run: make test-x86
