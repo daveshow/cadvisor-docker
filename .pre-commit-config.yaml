@@ -17,7 +17,7 @@ repos:
     rev: v2.1.0
     hooks:
       - id: docker-compose-check
-      - id: hadolint
+      # - id: hadolint
   - repo: https://github.com/hadolint/hadolint
     rev: v2.10.0
     hooks:

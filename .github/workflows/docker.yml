@@ -19,6 +19,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Assign release version from version.properties to Env variable
+        run: |
+           cat version.properties >> $GITHUB_ENV
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
@@ -53,6 +57,7 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: VERSION=${{ env.VERSION }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
