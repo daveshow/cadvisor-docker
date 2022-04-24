@@ -1,0 +1,6 @@
+.travis.yml
+Dockerfile.*
+Makefile
+Readme.md
+docker-compose.yaml
+tests/
