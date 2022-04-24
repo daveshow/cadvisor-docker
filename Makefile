@@ -5,6 +5,7 @@ CHDIR_SHELL        := $(SHELL)
 DESCRIBE           := $(shell git describe --match "v*" --always --tags)
 DESCRIBE_PARTS     := $(subst -, ,$(DESCRIBE))
 
+
 VERSION_TAG        := $(word 1,$(DESCRIBE_PARTS))
 COMMITS_SINCE_TAG  := $(word 2,$(DESCRIBE_PARTS))
 
