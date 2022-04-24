@@ -7,6 +7,9 @@ all: check
 install-hooks:
 	pre-commit install
 
+.PHONY test
+test:
+
 .PHONY: check
 check:
 	pre-commit run --all-files
