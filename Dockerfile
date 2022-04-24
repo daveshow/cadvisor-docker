@@ -2,7 +2,11 @@ FROM golang:buster AS builder
 ARG VERSION
 
 RUN apt-get -y update \
- && apt-get -y install make git bash gcc \
+ && apt-get -y install \
+ make \
+ git \
+ bash \
+ gcc \
  && mkdir -p $GOPATH/src/github.com/google \
  && git clone https://github.com/google/cadvisor.git $GOPATH/src/github.com/google/cadvisor
 
@@ -21,7 +25,11 @@ LABEL org.opencontainers.image.authors="dengnan@google.com vmarmol@google.com vi
 
 RUN sed -i 's,https://dl-cdn.alpinelinux.org,http://dl-4.alpinelinux.org,g' /etc/apk/repositories
 
-RUN apk --no-cache add libc6-compat device-mapper findutils thin-provisioning-tools && \
+RUN apk --no-cache add \
+    libc6-compat \
+    device-mapper \
+    findutils \
+    thin-provisioning-tools && \
     echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf && \
     rm -rf /var/cache/apk/*
 
