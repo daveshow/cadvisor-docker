@@ -20,7 +20,7 @@ RUN git fetch --tags \
 # ------------------------------------------
 # Copied over from deploy/Dockerfile except that the "zfs" dependency has been removed
 # a its not available fro Alpine on ARM
-FROM alpine:3.15
+FROM alpine:3.16.0
 LABEL org.opencontainers.image.authors="dengnan@google.com vmarmol@google.com vishnuk@google.com jimmidyson@gmail.com stclair@google.com"
 
 RUN sed -i 's,https://dl-cdn.alpinelinux.org,http://dl-4.alpinelinux.org,g' /etc/apk/repositories
