@@ -20,16 +20,16 @@ RUN git fetch --tags \
 # ------------------------------------------
 # Copied over from deploy/Dockerfile except that the "zfs" dependency has been removed
 # a its not available fro Alpine on ARM
-FROM alpine:3.15
+FROM alpine:3.16
 LABEL org.opencontainers.image.authors="dengnan@google.com vmarmol@google.com vishnuk@google.com jimmidyson@gmail.com stclair@google.com"
 
 RUN sed -i 's,https://dl-cdn.alpinelinux.org,http://dl-4.alpinelinux.org,g' /etc/apk/repositories
 
 RUN apk --update-cache --no-cache add \
-    "libc6-compat=1.2.2-r7" \
+    "libc6-compat=1.2.3-r0" \
     "device-mapper=2.02.187-r2" \
-    "findutils=4.8.0-r1" \
-    "thin-provisioning-tools=0.9.0-r1" && \
+    "findutils=4.9.0-r0" \
+    "thin-provisioning-tools=0.9.0-r2" && \
     echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf && \
     rm -rf /var/cache/apk/*
 
